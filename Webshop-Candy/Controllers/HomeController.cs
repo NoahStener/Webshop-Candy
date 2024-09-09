@@ -1,32 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Webshop_Candy.Models;
+using Webshop_Candy.Service;
+using Webshop_Candy.ViewModels;
 
 namespace Webshop_Candy.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ICandyRepository _candyRepo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICandyRepository candyRepo)
         {
-            _logger = logger;
+            _candyRepo = candyRepo;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
+            var homeViewModel = new HomeViewModel
+            {
+                CandyOnSale = _candyRepo.GetCandyOnSale,
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(homeViewModel);
         }
     }
 }
