@@ -1,4 +1,4 @@
-body {
+﻿body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background-image: url('/images/pattern.png');
     background-repeat: repeat;
@@ -41,10 +41,10 @@ body {
     padding: 0;
 }
 
-.thumbnail .caption-full {
-    padding: 9px;
-    color: #333;
-}
+    .thumbnail .caption-full {
+        padding: 9px;
+        color: #333;
+    }
 
 footer {
     margin: 50px 0;
